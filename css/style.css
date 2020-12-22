@@ -1,0 +1,50 @@
+/*body, a{
+	color : #fff;
+	background-color: #2e272d;
+	background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+}
+/*img{
+	width: 30%;
+	border-radius: 25%;
+}*/
+
+.page-footer{
+	background: #30699c;
+	color : white;
+}
+.color_font{
+	color : white;
+	text-decoration: none;
+}
+.color_font:hover{
+	color : #defff0;
+}
+.fa.fa-shopping-basket{
+	color: white;
+	size: 2rem;
+}
+
+.navbar{
+	 color : black;
+	 background-color:  #30699c;
+	}   
+.container{
+	padding-top: 5em;
+}
+#section_ga{
+	margin-top: 2rem;
+}
+.col-md-3{
+	padding-left: 2rem;
+}
+#sectionPanier{
+	margin-top: 3rem;
+}
+/* Modal Content/Box */
+.modal-content {
+	background-color: #fefefe;
+	margin: 15% auto; /* 15% from the top and centered */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%; /* Could be more or less, depending on screen size */
+  }
