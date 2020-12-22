@@ -20,19 +20,20 @@
         div.id = "panierGlobal";
     let p = document.createElement("p");
         p.id = "panierDetail" ;
-      //  p.textContent = "Il y a " + `${monPanier.length}` + " article(s) dans votre panier : "; // penser à adapter le mot article en fonction du nombre
+        p.textContent = "Il y a " + `${panier.length}` + " article(s) dans votre panier : "; // penser à adapter le mot article en fonction du nombre
     let divCart = document.createElement("div");
         divCart.id = "contenuPanier";
-    let table = document.createElement("table");  
-    let tr0 = document.createElement('tr');
-    let td01 = document.createElement('td');
-        td01.textContent = "Modèle";
-    let td02 = document.createElement('td');
-        td02.textContent = 'Référence';
-    let td03 = document.createElement('td');
-        td03.textContent = 'Prix';
-    let td04 = document.createElement ('td');
-        td04.textContent = 'Indice'
+    let ulProduit = document.createElement ('ul');
+    // let table = document.createElement("table");  
+    // let tr0 = document.createElement('tr');
+    // let td01 = document.createElement('td');
+    //     td01.textContent = "Modèle";
+    // let td02 = document.createElement('td');
+    //     td02.textContent = 'Référence';
+    // let td03 = document.createElement('td');
+    //     td03.textContent = 'Prix';
+    // let td04 = document.createElement ('td');
+    //     td04.textContent = 'Indice'
     let divPrixTotal = document.createElement("div");
         divPrixTotal.id = "prixTotal"
     let pPrixTotal = document.createElement('p');
@@ -49,16 +50,17 @@
     section1.appendChild(div);
     section1.appendChild(divCart);
     section1.appendChild(divPrixTotal);
+    divCart.appendChild(ulProduit);
     divPrixTotal.appendChild(pPrixTotal);
     div.appendChild(p);  
     p.textContent = "Votre panier est vide";
-    divCart.appendChild(table); 
-    table.appendChild(tr0)
+    // divCart.appendChild(table); 
+    // table.appendChild(tr0)
     
-    tr0.appendChild(td01)
-    tr0.appendChild(td02)
-    tr0.appendChild(td03)
-    tr0.appendChild(td04)
+    // tr0.appendChild(td01)
+    // tr0.appendChild(td02)
+    // tr0.appendChild(td03)
+    // tr0.appendChild(td04)
 
     // Message sur quantité d'objet dans la panier
     
@@ -93,29 +95,29 @@
             //console.log(monPanier)
                 console.log(panier)
                 console.log(`${panier.name}`)
-                let tr = document.createElement("tr");
-                let tdProduitNom = document.createElement('td');
-                    tdProduitNom.textContent = `${panier.name}`;
-                tr.appendChild(tdProduitNom);
-                let tdProduitRef = document.createElement('td');
-                    tdProduitRef.textContent = `${panier._id}`;
-                tr.appendChild(tdProduitRef)
-                let tdProduitPrix = document.createElement('td');
-                    tdProduitPrix.textContent = `${panier.price}`/100 + " €" ;
-                tr.appendChild(tdProduitPrix);
-                let tdIndice = document.createElement('td');
-                    tdIndice.textContent = nombreProduit();
-                table.appendChild(tr);
-                
-               // li.className = "listeProduit";
+                // let tr = document.createElement("tr");
+                // let tdProduitNom = document.createElement('td');
+                //     tdProduitNom.textContent = `${panier.name}`;
+                // tr.appendChild(tdProduitNom);
+                // let tdProduitRef = document.createElement('td');
+                //     tdProduitRef.textContent = `${panier._id}`;
+                // tr.appendChild(tdProduitRef)
+                // let tdProduitPrix = document.createElement('td');
+                //     tdProduitPrix.textContent = `${panier.price}`/100 + " €" ;
+                // tr.appendChild(tdProduitPrix);
+                // let tdIndice = document.createElement('td');
+                //     tdIndice.textContent = nombreProduit();
+                // table.appendChild(tr);
+               let li = document.createElement ('li'); 
+               li.className = "listeProduit";
                  //panier = [];
         //        let indice = `${panier._id}`;
          //       console.log(`${panier._id}`);
         //        let idx = panier.indexOf(indice);
         //        console.log('idx');
                
-               // li.textContent = "Caméra : "  + `${panier.name}` + " " + "Réf. : " + `${panier._id}` + " Prix : " + `${panier.price}`/100 + "€";
-               // ulProduit.appendChild(li);
+               li.textContent = "Caméra : "  + `${panier.name}` + " " + " Prix : " + `${panier.price}`/100 + "€";
+               ulProduit.appendChild(li);
 
             // bouton supprimer
             //     let supprimerArticle = document.createElement("button");
