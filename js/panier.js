@@ -24,16 +24,6 @@
     let divCart = document.createElement("div");
         divCart.id = "contenuPanier";
     let ulProduit = document.createElement ('ul');
-    // let table = document.createElement("table");  
-    // let tr0 = document.createElement('tr');
-    // let td01 = document.createElement('td');
-    //     td01.textContent = "Modèle";
-    // let td02 = document.createElement('td');
-    //     td02.textContent = 'Référence';
-    // let td03 = document.createElement('td');
-    //     td03.textContent = 'Prix';
-    // let td04 = document.createElement ('td');
-    //     td04.textContent = 'Indice'
     let divPrixTotal = document.createElement("div");
         divPrixTotal.id = "prixTotal"
     let pPrixTotal = document.createElement('p');
@@ -54,13 +44,6 @@
     divPrixTotal.appendChild(pPrixTotal);
     div.appendChild(p);  
     p.textContent = "Votre panier est vide";
-    // divCart.appendChild(table); 
-    // table.appendChild(tr0)
-    
-    // tr0.appendChild(td01)
-    // tr0.appendChild(td02)
-    // tr0.appendChild(td03)
-    // tr0.appendChild(td04)
 
     // Message sur quantité d'objet dans la panier
     
@@ -95,19 +78,6 @@
             //console.log(monPanier)
                 console.log(panier)
                 console.log(`${panier.name}`)
-                // let tr = document.createElement("tr");
-                // let tdProduitNom = document.createElement('td');
-                //     tdProduitNom.textContent = `${panier.name}`;
-                // tr.appendChild(tdProduitNom);
-                // let tdProduitRef = document.createElement('td');
-                //     tdProduitRef.textContent = `${panier._id}`;
-                // tr.appendChild(tdProduitRef)
-                // let tdProduitPrix = document.createElement('td');
-                //     tdProduitPrix.textContent = `${panier.price}`/100 + " €" ;
-                // tr.appendChild(tdProduitPrix);
-                // let tdIndice = document.createElement('td');
-                //     tdIndice.textContent = nombreProduit();
-                // table.appendChild(tr);
                let li = document.createElement ('li'); 
                li.className = "listeProduit";
                  //panier = [];
@@ -198,13 +168,28 @@ function getProductsOrdered(){ // récupérer uniquement id
         //console.log(monPanier)
         console.log(panier)
         console.log(panier._id)
-        let products = panier._id; // 
-        
+        let productId = JSON.parse(localStorage.getItem('panier._id')); // envoyer ca dans le storage
+        localStorage.setItem('productId', JSON.stringify(productId));
     })
 
 }
+/* ex
+var payload = {
+    a: 1,
+    b: 2
+};
 
-//https://www.youtube.com/watch?v=pA-FAyiWQdI
+var data = new FormData();
+data.append( "json", JSON.stringify( payload ) );
+
+fetch("/echo/json/",
+{
+    method: "POST",
+    body: data
+})
+.then(function(res){ return res.json(); })
+.then(function(data){ alert( JSON.stringify( data ) ) }) */
+
 
     //SlocalStorage.getItem('monPanier', JSON.stringify(panier));
     // var monobjet_json = JSON.stringify(panier);
@@ -257,13 +242,14 @@ function getCustomerInfo(){
             this.email = email;
         }
     Contact = new Contact;
- 
+ // ajouter data user au localStorage sous forme 
     }
 }
 
 
 function validateAndSendOrder(){
     console.log('validateAndSendOrder!')
+
 }
 
 
@@ -285,10 +271,10 @@ function sendOrder(productsOrdered, customerInfo){
              if (this.readyState == XMLHttpRequest.DONE) {
                let confirmation = JSON.parse(this.responseText);
                sessionStorage.setItem('order', JSON.stringify(confirmation));
-               let prix = JSON.parse(localStorage.getItem('prixTotal'));
+               /*let prix = JSON.parse(localStorage.getItem('prixTotal'));
                sessionStorage.setItem('prix', JSON.stringify(prix));
               console.log(typeof prix);
-              console.log( prix);
+              console.log( prix);*/
                //Des que la requete est envoyé, on bascule sur la page de confirmation de commande avec toutes les infos demandé : Id de commande, prix du panier
                window.location.href = "confirmation_commande.html";
              }
