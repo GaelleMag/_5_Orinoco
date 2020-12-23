@@ -169,29 +169,30 @@ function getProductsOrdered(){
   let panier = localStorage.getItem('monPanier');
   console.log(panier)
 
-if (panier == null){
-  alert("Votre panier est vide")
- }  
-// Tableau produits 
- let products = [];
+    if (panier == null){
+    alert("Votre panier est vide")
+    }  
+    // Tableau produits 
+    let products = [];
  // récupérer uniquement id 
 
-}
-function productsId(products) {
-    //let panier = JSON.parse(localStorage.getItem('monPanier'));
-        products = Object.values(panier).map( (panier) => {
+    function productsId(products) {
         let quantite = parseInt(panier.length);
         console.log(typeof quantite);
         console.log(quantite);
-        for (let i = 0 ; i< qté ; i ++){
-            products.push(panier._id);  
-            }
-            console.log(products); 
-            return products; 
-        });
-    }
+        products = Object.values(panier).map( (panier) => {
+            for (let i = 0 ; i< quantite ; i ++){
+                products = localStorage.getItem(panier.id)
+                products.push(panier._id);  
+                localStorage.setItem('productId', JSON.stringify(products));
+                }
+                console.log(products); 
+                return products; 
+            });
+        }
+    productsId();
+}
 
-productsId(products);
 
 let customerInfo = getCustomerInfo()
 console.log(customerInfo)
@@ -220,12 +221,12 @@ function getCustomerInfo(){
 // Création de la fonction envoyer données au serveur + récupération id commande en retour
 function validateAndSendOrder(){
     console.log('validateAndSendOrder!')
-let send = {
-    customerInfo,
-    productsOrdered
-//Contact, 
-//products
-}
+    let send = {
+        customerInfo,
+        productsOrdered
+    //Contact, 
+    //products
+    }
 
 // let sendOrder = JSON.stringify(send);
 // }
@@ -249,9 +250,9 @@ fetch("/echo/json/",
 
     // Envoyer Data vers id /order
 
-let orderReturn = sendOrder(productsOrdered, customerInfo);
+//let orderReturn = sendOrder(productsOrdered, customerInfo);
 //function sendOrder(productsOrdered, customerInfo){
-    function sendOrder() {
+    function sendOrder(productsOrdered, customerInfo) {
 
       let request = new XMLHttpRequest();
            request.onreadystatechange = function () {
@@ -289,4 +290,3 @@ function contactUs() {
         imageAlt: 'contact'
     })  
 };
-
