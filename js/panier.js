@@ -163,40 +163,10 @@ function verifMail(){
            // Bouton envoyer
 let productsOrdered = getProductsOrdered() // récupère les infos et les stocke en objet
 
-/*function achat() {
-
-// integration d'une alerte si le panier est vide, on ne peut pas passer commande  
-  let panier = localStorage.getItem('panier');
-  panier = JSON.parse(panier);
-  var total = localStorage.getItem('prixTotal');
-if (panier == null || total == 0){
-  alert("Votre panier est vide, vous ne pouvez pas passer une commande ! ")
- }  
-// on déclare un tableau de produits pour la requete POST plus tard
- let products = [];
-
- // on fait une fonction pour récupérer les id des produits au panier, pour l'afficher dans la requete POST
- function productId(products) {
-  let panier = JSON.parse(localStorage.getItem('panier'));
-  
-  products = Object.values(panier).map( (data) => {
-    let qté = parseInt(data.qté);
-    console.log(typeof qté);
-    console.log(qté);
-    
-    for (let i = 0 ; i< qté ; i ++){
-        products.push(data._id);  
-      }
-       console.log(products); 
-      return products; 
-     });
- 
-  };*/
 
 function getProductsOrdered(){
     // Vérification du panier (non nul) 
   let panier = localStorage.getItem('monPanier');
-  //panier = JSON.parse(panier);
   console.log(panier)
 
 if (panier == null){
@@ -204,89 +174,24 @@ if (panier == null){
  }  
 // Tableau produits 
  let products = [];
- // récupérer uniquement id :
- function productsId(products) {
-    let panier = JSON.parse(localStorage.getItem('panier'));
-    
-    products = Object.values(panier).map( (panier) => {
-      let qté = parseInt(panier.length);
-      console.log(typeof qté);
-      console.log(qté);
-      
-      for (let i = 0 ; i< qté ; i ++){
-          products.push(panier._id);  
-        }
-         console.log(products); 
-        return products; 
-       });
-  
-    }
+ // récupérer uniquement id 
 
 }
- /* let idArray = [];
-    panier.forEach(function(panier){
-        idArray = idArray+1;
-        //console.log(monPanier)
-        console.log(panier)
-        console.log(panier._id)
-        //let productId = JSON.parse(localStorage.getItem('panier._id')); // envoyer ca dans le storage
-        let productId = panier._id;
-        console.log(typeof productId)
-        console.log(productId)
-        productId.push(panier._id);
-        localStorage.setItem('productId', JSON.stringify(productId));
-        // pour chaque article
-        // je dois récupérer les id des produits stockés dans mon storage 'panier' pour les stocker dans une variable
-        // ensuite, je dois prendre cette variable et l'envoyer dans mon storage via un nouveau nom (=créa d'un 'cookie') pour envoi
-       // push array [idarray, panier._id];*/
-/* ex
-var payload = {
-    a: 1,
-    b: 2
-};
+function productsId(products) {
+    //let panier = JSON.parse(localStorage.getItem('monPanier'));
+        products = Object.values(panier).map( (panier) => {
+        let quantite = parseInt(panier.length);
+        console.log(typeof quantite);
+        console.log(quantite);
+        for (let i = 0 ; i< qté ; i ++){
+            products.push(panier._id);  
+            }
+            console.log(products); 
+            return products; 
+        });
+    }
 
-var data = new FormData();
-data.append( "json", JSON.stringify( payload ) );
-
-fetch("/echo/json/",
-{
-    method: "POST",
-    body: data
-})
-.then(function(res){ return res.json(); })
-.then(function(data){ alert( JSON.stringify( data ) ) }) */
-
-
-    //SlocalStorage.getItem('monPanier', JSON.stringify(panier));
-    // var monobjet_json = JSON.stringify(panier);
-    // var monobjet = JSON.parse(monobjet_json);
-// Affichage dans la console
-   // console.log(monobjet.name);
-    //let  productsInCart = localStorage.getItem(panier._id);
-    //console.log(panier._id)
-    //console.log(productsInCart)
-//     let mon_objet = Object.create({}, { getToto: { value: function() { return this.toto; } } });
-// mon_obj.toto = "truc";
-// let  productsInCart = panier
-// console.log(Object.values(panier.id));
-
-// let  productsInCart = Object.create({}, { getPanier: { value: function() { return this._id; } } });
-// panier = "_id";
-
-// //console.log(Object.values(mon_obj))
-//     console.log(Object.values(panier))
-//   //  let productsInCart = `${panier._id}`;
-//     console.log( `${panier._id}`)
-//     console.log(panier.name);  //   let prixProduit = parseFloat(`${panier.price}`);
-//         console.log(productsInCart)    
-    // for (let productsInCart in panier) {
-    //     console.log(panier._id);
-    //     console.log(typeof panier);
-    //     console.log(panier.name)   // parse
-    //   }
-    
-
-
+productsId(products);
 
 let customerInfo = getCustomerInfo()
 console.log(customerInfo)
@@ -315,28 +220,44 @@ function getCustomerInfo(){
 // Création de la fonction envoyer données au serveur + récupération id commande en retour
 function validateAndSendOrder(){
     console.log('validateAndSendOrder!')
-
+let send = {
+    customerInfo,
+    productsOrdered
+//Contact, 
+//products
 }
 
+// let sendOrder = JSON.stringify(send);
+// }
 
+/* ex
+var payload = {
+    a: 1,
+    b: 2
+};
+
+var data = new FormData();
+data.append( "json", JSON.stringify( payload ) );
+
+fetch("/echo/json/",
+{
+    method: "POST",
+    body: data
+})
+.then(function(res){ return res.json(); })
+.then(function(data){ alert( JSON.stringify( data ) ) }) */
 
     // Envoyer Data vers id /order
 
-let orderReturn = sendOrder(productsOrdered, customerInfo)
-function sendOrder(productsOrdered, customerInfo){
-    //prendre les données et les envoyer à API http://localhost:3000/api/cameras/order;
-    // gérer order return si ok alors return  if sendOrder = ok
-     //                    else si ko alors ...
-     if (panier == null || total == 0){
-        return event.preventDefault();
-     
-      } else {
-      // si tout à été bien rempli, on envoi la commande au serveur, avec toutes les coordonnées du client
+let orderReturn = sendOrder(productsOrdered, customerInfo);
+//function sendOrder(productsOrdered, customerInfo){
+    function sendOrder() {
+
       let request = new XMLHttpRequest();
            request.onreadystatechange = function () {
              if (this.readyState == XMLHttpRequest.DONE) {
                let confirmation = JSON.parse(this.responseText);
-               sessionStorage.setItem('order', JSON.stringify(confirmation));
+               localStorage.setItem('order', JSON.stringify(confirmation));
                /*let prix = JSON.parse(localStorage.getItem('prixTotal'));
                sessionStorage.setItem('prix', JSON.stringify(prix));
               console.log(typeof prix);
@@ -353,62 +274,15 @@ function sendOrder(productsOrdered, customerInfo){
     console.log('sendOrder')
 }
   
-   
-  
-
 document.getElementById('envoyer').addEventListener('click', function(event) {
     console.log('2');
     validateAndSendOrder();
 
 });
-// // Get the modal
-// var modal = document.getElementById("myModal");
-    
-// // Get the button that opens the modal
-// var btn = document.getElementById("myBtn");
-//     btn.setAttribute("src", images/contact.jpg);
-    
 
-// // Get the <span> element that closes the modal
-// var span = document.getElementsByClassName("close")[0];
-
-// // When the user clicks on the button, open the modal
-// btn.onclick = function() {
-//   modal.style.display = "block";
-// }
-
-// // When the user clicks on <span> (x), close the modal
-// span.onclick = function() {
-//   modal.style.display = "none";
-// }
-
-// // When the user clicks anywhere outside of the modal, close it
-// window.onclick = function(event) {
-//   if (event.target == modal) {
-//     modal.style.display = "none";
-//   }
-// }
-// //export {lastName};
-// function contactUs() {
-//     Swal.fire({
-//         imageUrl: 'images/contact.jpg',
-//         imageHeight: 1500,
-//         imageAlt: 'A tall image'
-//       })
-//       })
-// };
-    
-    // getElementById('contactUs').function openContact(){
-    //     Swal.fire({
-    //         imageUrl: 'image/contact.jpg',
-    //         imageHeight: 1500,
-    //         imageAlt: 'contact'
-    //     })         
-    // };
 
 function contactUs() {
     Swal.fire({
-        //let btnContact = document.getElementById()
         imageUrl: 'images/contact2.jpg',
         imageHeight: 700,
         imageWidth : 1500,
