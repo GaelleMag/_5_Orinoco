@@ -163,16 +163,82 @@ function verifMail(){
            // Bouton envoyer
 let productsOrdered = getProductsOrdered() // récupère les infos et les stocke en objet
 
-function getProductsOrdered(){ // récupérer uniquement id
+/*function achat() {
+
+// integration d'une alerte si le panier est vide, on ne peut pas passer commande  
+  let panier = localStorage.getItem('panier');
+  panier = JSON.parse(panier);
+  var total = localStorage.getItem('prixTotal');
+if (panier == null || total == 0){
+  alert("Votre panier est vide, vous ne pouvez pas passer une commande ! ")
+ }  
+// on déclare un tableau de produits pour la requete POST plus tard
+ let products = [];
+
+ // on fait une fonction pour récupérer les id des produits au panier, pour l'afficher dans la requete POST
+ function productId(products) {
+  let panier = JSON.parse(localStorage.getItem('panier'));
+  
+  products = Object.values(panier).map( (data) => {
+    let qté = parseInt(data.qté);
+    console.log(typeof qté);
+    console.log(qté);
+    
+    for (let i = 0 ; i< qté ; i ++){
+        products.push(data._id);  
+      }
+       console.log(products); 
+      return products; 
+     });
+ 
+  };*/
+
+function getProductsOrdered(){
+    // Vérification du panier (non nul) 
+  let panier = localStorage.getItem('monPanier');
+  //panier = JSON.parse(panier);
+  console.log(panier)
+
+if (panier == null){
+  alert("Votre panier est vide")
+ }  
+// Tableau produits 
+ let products = [];
+ // récupérer uniquement id :
+ function productsId(products) {
+    let panier = JSON.parse(localStorage.getItem('panier'));
+    
+    products = Object.values(panier).map( (panier) => {
+      let qté = parseInt(panier.length);
+      console.log(typeof qté);
+      console.log(qté);
+      
+      for (let i = 0 ; i< qté ; i ++){
+          products.push(panier._id);  
+        }
+         console.log(products); 
+        return products; 
+       });
+  
+    }
+
+}
+ /* let idArray = [];
     panier.forEach(function(panier){
+        idArray = idArray+1;
         //console.log(monPanier)
         console.log(panier)
         console.log(panier._id)
-        let productId = JSON.parse(localStorage.getItem('panier._id')); // envoyer ca dans le storage
+        //let productId = JSON.parse(localStorage.getItem('panier._id')); // envoyer ca dans le storage
+        let productId = panier._id;
+        console.log(typeof productId)
+        console.log(productId)
+        productId.push(panier._id);
         localStorage.setItem('productId', JSON.stringify(productId));
-    })
-
-}
+        // pour chaque article
+        // je dois récupérer les id des produits stockés dans mon storage 'panier' pour les stocker dans une variable
+        // ensuite, je dois prendre cette variable et l'envoyer dans mon storage via un nouveau nom (=créa d'un 'cookie') pour envoi
+       // push array [idarray, panier._id];*/
 /* ex
 var payload = {
     a: 1,
@@ -246,7 +312,7 @@ function getCustomerInfo(){
     }
 }
 
-
+// Création de la fonction envoyer données au serveur + récupération id commande en retour
 function validateAndSendOrder(){
     console.log('validateAndSendOrder!')
 
