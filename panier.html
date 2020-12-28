@@ -1,20 +1,20 @@
 <!doctype html>
 <html>
-
 <head>
-    <meta charset="utf-8">
-    <title>OrinoCamera</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-<!-- Optional: include a polyfill for ES6 Promises for IE11 -->
-<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
-
+  <meta charset="utf-8">
+  <title>OrinoCamera</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 </head>
-
 <body>
-    <header id="header">
-        <nav class="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar">
+  <header id="header">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar">
       <a class="navbar-brand" href="#"><strong>Orinoco</strong></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,114 +31,87 @@
         </ul>
       </div>
     </nav>
-      </header>
-  
-    <!--<section id="sectionPanier">
-        <h2 id="recap"> Récapitulatif 
-        </h2>
-        <div id="panierGlobal">
-            <p id="panierDetail">Il y a x article dans votre panier :</p>
+  </header>
+  <section id="sectionFormulaire">
+    <form id="monFormulaire" method="post" <action="http://localhost:3000/api/order/">
+      <h2>Commande</h2>
+      <p> Merci de remplir le formulaire ci-dessous afin de valider votre commande </p>
+      <div class="row mb-4">
+        <div class="col">
+          <div class="form-outline">
+            <label class="form-label" for="nom">Nom : </label>
+            <input type="text" name="nom" class="form-control" id="firstName" placeholder="Ex. : Dupont" required>
+            <span id="nom"></span>
+          </div>
         </div>
-        <table>appareils / qté / prix</table>
-
-    !-- contenu panier -->
-  <!--  </section> -->
-
-    <section id="sectionFormulaire">
-        <form id="monFormulaire" method="post" <action="http://localhost:3000/api/order/">
-            
-           
-            <h2>Commande</h2>
-            <p> Merci de remplir le formulaire ci-dessous afin de valider votre commande </p>
-            <div class="row mb-4">
-                <div class="col">
-                    <div class="form-outline">
-                        <label class="form-label" for="nom">Nom : </label>
-                        <input type="text" name="nom" class="form-control" id="firstName" placeholder="Ex. : Dupont" required>
-                        <span id="nom"></span>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-outline">
-                        <label class="form-label" for="prenom">Prénom : </label>
-                        <input type="text" name="prenom" class="form-control" id="lastName" placeholder="Ex. : Jean"required>
-                        <span id="prenom"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="row mb-4">
-                <div class="col">
-                    <div class="form-outline">
-                        <label class="form-label" for="voie">Voie : </label>
-                        <input type="text" name="voie" class="form-control" id="address" placeholder="Ex. : 2 rue de l'Eglise"required>
-                        <span id="adresse"></span>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-outline">
-                        <label class="form-label" for="ville">Ville : </label>
-                        <input type="text" name="ville" class="form-control" id="city" placeholder="69000 Lyon" required>
-                        <span id="adresse"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="form-outline mb-4">
-                <label class="form-label" for="courriel">Adresse mail :</label>
-                <input type="email" name="courriel" class="form-control" id="email" required placeholder="nom.prenom@domaine.fr">
-                <span id="aideCourriel"></span>
-            </div> 
-        
-         
-
-            <!-- <button onclick="sendData({test:'ok'})">Cliquez ici pour valider !</button> -->
-            <input type="submit" class="btn btn-success btn-block mb-4" id="envoyer" value="Envoyer" > 
-            <input type="reset" class="btn btn-danger btn-block mb-4" value="Annuler">
-        </form>
-    </section>
-    <footer id="footer" class="page-footer">
-        <div class="container">
-          <div class="row text-center d-flex justify-content-center">
-            <div class="col-md-2 mb-3">
-              <h6 class="text-uppercase font-weight-bold">
-                <a class="color_font" href="#!">A propos de nous</a>
-              </h6>
-            </div>
-          <div class="col-md-2 mb-3">
-            <h6 class="text-uppercase font-weight-bold">
-              <a class="color_font" href="#!">Mentions légales</a>
-            </h6>
+        <div class="col">
+          <div class="form-outline">
+            <label class="form-label" for="prenom">Prénom : </label>
+            <input type="text" name="prenom" class="form-control" id="lastName" placeholder="Ex. : Jean" required>
+            <span id="prenom"></span>
           </div>
-          <div class="col-md-2 mb-3">
-            <h6 class="text-uppercase font-weight-bold">
-              <a class="color_font"  href="#!">CGV</a>
-            </h6>
-          </div>
-          <div class="col-md-2 mb-3">
-            <h6 class="text-uppercase font-weight-bold">
-              <a class="color_font" href="#!">On parle de nous!</a>
-            </h6>
-          </div>
-          <div class="col-md-2 mb-3">
-            <h6 class="text-uppercase font-weight-bold">
-              <!--   <button id="myBtn">Open Modal</button>
-               <div id="myModal" class="modal">
-                    Modal content 
-                    <div class="modal-content">
-                      <span class="close">&times;</span>
-                      <p>Some text in the Modal..</p>
-                    </div>
-                </div>-->
-              <a onclick="contactUs()"  class="color_font" href="#">Contact</a>
-            </h6>
-          </div>
+        </div>
       </div>
-    <div class="footer-copyright text-center py-3">© 2020 Copyright : Gaëlle M.
-    </div>
-    </footer>
-
-    <script src="js/panier.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+      <div class="row mb-4">
+        <div class="col">
+          <div class="form-outline">
+            <label class="form-label" for="voie">Voie : </label>
+            <input type="text" name="voie" class="form-control" id="address" placeholder="Ex. : 2 rue de l'Eglise"
+              required>
+            <span id="adresse"></span>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-outline">
+            <label class="form-label" for="ville">Ville : </label>
+            <input type="text" name="ville" class="form-control" id="city" placeholder="69000 Lyon" required>
+            <span id="adresse"></span>
+          </div>
+        </div>
+      </div>
+      <div class="form-outline mb-4">
+        <label class="form-label" for="courriel">Adresse mail :</label>
+        <input type="email" name="courriel" class="form-control" id="email" required
+          placeholder="nom.prenom@domaine.fr">
+        <span id="aideCourriel"></span>
+      </div>
+      <input type="submit" class="btn btn-success btn-block mb-4" id="envoyer" value="Envoyer">
+      <input type="reset" class="btn btn-danger btn-block mb-4" value="Annuler">
+    </form>
+  </section>
+  <footer id="footer" class="page-footer">
+    <div class="container">
+      <div class="row text-center d-flex justify-content-center">
+        <div class="col-md-2 mb-3">
+          <h6 class="text-uppercase font-weight-bold">
+            <a class="color_font" href="#!">A propos de nous</a>
+          </h6>
+        </div>
+        <div class="col-md-2 mb-3">
+          <h6 class="text-uppercase font-weight-bold">
+            <a class="color_font" href="#!">Mentions légales</a>
+          </h6>
+        </div>
+        <div class="col-md-2 mb-3">
+          <h6 class="text-uppercase font-weight-bold">
+            <a class="color_font" href="#!">CGV</a>
+          </h6>
+        </div>
+        <div class="col-md-2 mb-3">
+          <h6 class="text-uppercase font-weight-bold">
+            <a class="color_font" href="#!">On parle de nous!</a>
+          </h6>
+        </div>
+        <div class="col-md-2 mb-3">
+          <h6 class="text-uppercase font-weight-bold">
+            <a onclick="contactUs()" class="color_font" href="#">Contact</a>
+          </h6>
+        </div>
+      </div>
+      <div class="footer-copyright text-center py-3">© 2020 Copyright : Gaëlle M.
+      </div>
+  </footer>
+  <script src="js/panier.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </body>
-
 </html>
