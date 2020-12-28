@@ -14,6 +14,10 @@ let panier = JSON.parse(localStorage.getItem('monPanier'));
   .then((resp) => resp.json())
   .then(function(data) {
     console.log(data)
+
+    // compteur produit
+    let nbre = document.getElementById('panier');
+        nbre.textContent = 'Panier (' + `${panier.length}` + ')';
     let cameras = data;
     let main = document.getElementById('toutesNosCameras');
     let h1 = createNode('h1');
