@@ -3,7 +3,7 @@
 const imageCamera = document.querySelector('img');
 const params = new URLSearchParams(document.location.search);
 const id = params.get('id');
-let url = "http://localhost:3000/api/cameras/";
+let url = 'http://localhost:3000/api/cameras/';
 let urlProduit =  'detail.produit.html?id=' + '._id';
 console.log(urlProduit)
  
@@ -41,9 +41,9 @@ fetch('http://localhost:3000/api/cameras/'+ id)
 
         // let header = document.getElementById('enTete');
         // let a = document.createElement('a');  
-        // let lien = document.createTextNode("Voir mon panier (" + `${panier.length}` + ")"); 
-        // a.title = "Voir mon joli panier";  
-        // a.href = "panier.html";
+        // let lien = document.createTextNode('Voir mon panier (' + `${panier.length}` + ')'); 
+        // a.title = 'Voir mon joli panier';  
+        // a.href = 'panier.html';
         // header.appendChild(a);
         //     a.appendChild(lien); 
         // document.body.appendChild(header);
@@ -54,50 +54,50 @@ fetch('http://localhost:3000/api/cameras/'+ id)
 
 
         let main = document.createElement('main');
-            main.className = "container";
+            main.className = 'container';
         let h1 = document.createElement('h1');
-            h1.className = "my-4";
-            h1.innerHTML = "OrinoCamera, <small>votre boutique de caméra vintage</small>"
-        let section1 = document.createElement("section");
-            section1.id = "section_camera";
-            section1.className = "row";
-       // let div_con = document.createElement("div");
-        //    div_con.className = "col-md-12";
-        let div_title = document.createElement("div");
-            div_title.id = "title";
-            div_title.className = "my-3"
-        let div_row = document.createElement("div");
-            div_row.className = "col-md-5 first";
-        let div_row2 = document.createElement("div");
-            div_row2.className = "col-md-7 second";
-        let image = document.createElement("img");
-            image.className = "img-fluid";
-        let para = document.createElement("p");
-            para.id = "para";
-        let para_prix = document.createElement("p");
-            para_prix.id = "para_prix";
-        let span = document.createElement("span");
-            span.className = "col-md-4";
-        let sectionSelect = document.createElement("section");
-            sectionSelect.id = "section_ga";
-            sectionSelect.className = "row";
-        let div_lent = document.createElement("div");
-            div_lent.id = "div_select";
+            h1.className = 'my-4';
+            h1.innerHTML = 'OrinoCamera, <small>votre boutique de caméra vintage</small>'
+        let section1 = document.createElement('section');
+            section1.id = 'section_camera';
+            section1.className = 'row';
+       // let div_con = document.createElement('div');
+        //    div_con.className = 'col-md-12';
+        let div_title = document.createElement('div');
+            div_title.id = 'title';
+            div_title.className = 'my-3'
+        let div_row = document.createElement('div');
+            div_row.className = 'col-md-5 first';
+        let div_row2 = document.createElement('div');
+            div_row2.className = 'col-md-7 second';
+        let image = document.createElement('img');
+            image.className = 'img-fluid';
+        let para = document.createElement('p');
+            para.id = 'para';
+        let para_prix = document.createElement('p');
+            para_prix.id = 'para_prix';
+        let span = document.createElement('span');
+            span.className = 'col-md-4';
+        let sectionSelect = document.createElement('section');
+            sectionSelect.id = 'section_ga';
+            sectionSelect.className = 'row';
+        let div_lent = document.createElement('div');
+            div_lent.id = 'div_select';
 
-        let form = document.createElement("form");
-        form.className = "row justify-content-around custom-line"
-        let selectLent = document.createElement("select");
-            selectLent.id = "selectLentille";
-            selectLent.className = "col-md-3";
-        let boutonAjout = document.createElement("button");
-            boutonAjout.id = "btnAjout";
-            //boutonAjout.className = "col-md-3";
+        let form = document.createElement('form');
+        form.className = 'row justify-content-around custom-line'
+        let selectLent = document.createElement('select');
+            selectLent.id = 'selectLentille';
+            selectLent.className = 'col-md-3';
+        let boutonAjout = document.createElement('button');
+            boutonAjout.id = 'btnAjout';
+            //boutonAjout.className = 'col-md-3';
             boutonAjout.className = 'btn btn-success btn-block col-md-3';
-            boutonAjout.textContent = "Ajouter";
-        let retour = document.createElement("a");
-            retour.href = "index.html";
-            retour.className = "btn btn-primary btn-block mb-4";
-            retour.textContent = "Retour"; 
+            boutonAjout.textContent = 'Ajouter';
+        let retour = document.createElement('a');
+            retour.href = 'index.html';
+            retour.className = 'btn btn-primary btn-block mb-4';
+            retour.textContent = 'Retour'; 
 
 
 
@@ -129,13 +129,13 @@ fetch('http://localhost:3000/api/cameras/'+ id)
     //    document.body.appendChild(section);
        // section2.appendChild(div_row);
 
-       let t_prix = document.createTextNode('Prix : ' + `${data.price}`/100  + " €");
+       let t_prix = document.createTextNode('Prix : ' + `${data.price}`/100  + ' €');
         para_prix.appendChild(t_prix);
 
         let t_desc = document.createTextNode('Description : ' +  `${data.description}` + '\n');
         span.appendChild(t_desc);
         
-        image.setAttribute("src", data.imageUrl);
+        image.setAttribute('src', data.imageUrl);
 
         let titre = document.createTextNode(`${data.name}`); 
         div_title.appendChild(titre); 
