@@ -1,33 +1,31 @@
-// Compteur quantité
+  // Compteur quantité
 let panier = JSON.parse(localStorage.getItem("monPanier"));
-//let panier = localStorage.getItem('monPanier');
+  //let panier = localStorage.getItem('monPanier');
 let params = new URLSearchParams(document.location.search);
-
 let id = params.get("id");
 let idProduct = panier._id;
 
-// Affichage des éléments du DOM
+  // Affichage des éléments du DOM
 
 let section1 = document.createElement("section");
-section1.id = "sectionPanier";
+    section1.id = "sectionPanier";
 let h1 = document.createElement("h1");
-h1.textContent = "OrinoCamera";
+    h1.textContent = "OrinoCamera";
 let h2 = document.createElement("h2");
-h2.id = "recap";
-h2.textContent = "Panier";
+    h2.id = "recap";
+    h2.textContent = "Panier";
 let div = document.createElement("div");
-div.id = "panierGlobal";
+    div.id = "panierGlobal";
 let p = document.createElement("p");
-p.id = "panierDetail";
-p.textContent =
-  "Il y a " + `${panier.length}` + " article(s) dans votre panier : "; // penser à adapter le mot article en fonction du nombre
+    p.id = "panierDetail";
+    p.textContent = "Il y a " + `${panier.length}` + " article(s) dans votre panier : "; // penser à adapter le mot article en fonction du nombre
 let divCart = document.createElement("div");
-divCart.id = "contenuPanier";
+    divCart.id = "contenuPanier";
 let ulProduit = document.createElement("ul");
 let divPrixTotal = document.createElement("div");
-divPrixTotal.id = "prixTotal";
+    divPrixTotal.id = "prixTotal";
 let pPrixTotal = document.createElement("p");
-pPrixTotal.id = "prixTTC";
+    pPrixTotal.id = "prixTTC";
 let section2 = document.getElementById("sectionFormulaire");
 
 document.body.appendChild(header);
@@ -44,12 +42,11 @@ divPrixTotal.appendChild(pPrixTotal);
 div.appendChild(p);
 p.textContent = "Votre panier est vide";
 
-// Message sur quantité d'objet dans la panier
+  // Message sur quantité d'objet dans la panier
 
 if (panier) {
   function nombreProduit() {
     let qte = panier.length;
-
     if (qte == 1) {
       p.textContent =
         "Il y a " + `${panier.length}` + " article dans votre panier : ";
@@ -62,42 +59,22 @@ if (panier) {
   }
   nombreProduit();
 
-  //     SECTION 1 : LE PANIER
+      //     SECTION 1 : LE PANIER
 
-  // Affichage du panier
+    // Affichage du panier
 
   function afficherPanier() {
     let cart = JSON.parse(localStorage.getItem("monPanier"));
-    //             var txt = '{"_id": "5be1ed3f1c9d44000030b061", "name": "Zurss 50S"}'
-    // var obj = JSON.parse(txt);
-    // console.log(obj.name)
-    //for (let i=0; i<= panier.length; i++){
     panier.forEach(function (product) {
-      //console.log(monPanier)
       console.log(panier);
       console.log(`${product.name}`);
       let li = document.createElement("li");
       li.className = "listeProduit";
-      //panier = [];
-      //        let indice = `${panier._id}`;
-      //       console.log(`${panier._id}`);
-      //        let idx = panier.indexOf(indice);
-      //        console.log('idx');
-
-      li.textContent =
-        "Caméra : " +
-        `${product.name}` +
-        " " +
-        " Prix : " +
-        `${product.price}` / 100 +
-        "€";
+      li.textContent = "Caméra : " + `${product.name}` + " " + " Prix : " + `${product.price}` / 100 + "€";
       ulProduit.appendChild(li);
 
       // bouton supprimer
-      //     let supprimerArticle = document.createElement("button");
-      //     supprimerArticle.className = "btnSup";
-      //     supprimerArticle.textContent = "Supprimer";
-      //   //  li.appendChild(supprimerArticle);
+  
     });
   }
 }
@@ -120,17 +97,16 @@ retour.className = "btn btn-primary btn-block mb-4";
 retour.textContent = "Retour";
 section2.appendChild(retour);
 
-//     SECTION 2 : LE FORMULAIRE
+    //     SECTION 2 : LE FORMULAIRE
 
-// Affichage d'un message contextuel pour la saisie du nom
+  // Affichage d'un message contextuel pour la saisie du nom
 var nomElt = document.getElementById("nom");
-//nomElt.value = "Mon nom";
 
 nomElt.addEventListener("focus", function () {
   document.getElementById("nom").textContent = "Entrez votre nom";
 });
 
-// Suppression du message contextuel pour la saisie du nom
+  // Suppression du message contextuel pour la saisie du nom
 nomElt.addEventListener("blur", function (e) {
   document.getElementById("nom").textContent = "";
 });
@@ -149,18 +125,14 @@ function verifMail() {
       console.log("ok");
     }
     document.getElementById("aideCourriel").textContent = validiteEmail;
-  });
-}
-
-// var txt = '{"_id": "5be1ed3f1c9d44000030b061", "name": "Zurss 50S"}'
-// var obj = JSON.parse(txt);
-// console.log(obj.name)
+  })
+};
 
 // Bouton envoyer
 let productsOrdered = getProductsOrdered(); // récupère les infos et les stocke en objet
 
 function getProductsId() {
-    let products = []
+  let products = []
   panier.forEach((product) => products.push(product._id));
 
   return products;
@@ -170,14 +142,13 @@ function getProductsOrdered() {
   // Vérification du panier (non nul)
   let panier = localStorage.getItem("monPanier");
   console.log(panier);
-
   if (panier == null) {
     alert("Votre panier est vide");
   }
 
- const productsId = getProductsId();
- console.log(productsId)
 }
+const productsId = getProductsId();
+console.log(productsId)
 
 function getCustomerInfo() {
   let firstName = document.getElementById("firstName").value;
@@ -185,81 +156,81 @@ function getCustomerInfo() {
   let address = document.getElementById("address").value;
   let city = document.getElementById("city").value;
   let email = document.getElementById("email").value;
+};
+  let contact = {
+    'firstName' : firstName,
+    'lastName' : lastName,
+    'address' : address,
+    'city' : city,
+    'email' : email,
+  
 
-  class contact {
-    constructor(firstName, lastName, address, city, email) {
-      this.firstName = firstName;
-      this.lastName = lastName;
-      this.address = address;
-      this.city = city;
-      this.email = email;
-    }
-    contact = new Contact();
-    // ajouter data user au localStorage sous forme
-  }
+//   class contact {
+//     constructor(firstName, lastName, address, city, email) {
+//       this.firstName = firstName;
+//       this.lastName = lastName;
+//       this.address = address;
+//       this.city = city;
+//       this.email = email;
+//     }
+//   //   contact = new Contact();
+//     // ajouter data user au localStorage sous forme
+    
+//  //}
+//  // console.log(contact);
 }
 let customerInfo = getCustomerInfo();
-console.log(customerInfo);
-// Création de la fonction envoyer données au serveur + récupération id commande en retour
-function validateAndSendOrder() {
-  console.log("validateAndSendOrder!");
-  let send = {
-    customerInfo,
-    productsOrdered,
-    //Contact,
-    //products
-  };
+console.log(contact);
 
-  // let sendOrder = JSON.stringify(send);
-  // }
-
-  /* ex
-var payload = {
-    a: 1,
-    b: 2
+  //création de l'objet à envoyer
+let sendOrder = {
+  productsId,
+  contact
 };
-
-var data = new FormData();
-data.append( "json", JSON.stringify( payload ) );
-
-fetch("/echo/json/",
-{
-    method: "POST",
-    body: data
-})
-.then(function(res){ return res.json(); })
-.then(function(data){ alert( JSON.stringify( data ) ) }) */
-
+  
   // Envoyer Data vers id /order
 
+  fetch('http://localhost:3000/api/cameras/order', {
+    method : 'POST',
+    body : JSON.stringify(sendOrder),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+    }
+  })
+  .then(response => response.json()) 
+  .then(json => console.log(json))
+  .catch(err => console.log(err));
   //let orderReturn = sendOrder(productsOrdered, customerInfo);
   //function sendOrder(productsOrdered, customerInfo){
-  function sendOrder(productsOrdered, customerInfo) {
-    let request = new XMLHttpRequest();
-    request.onreadystatechange = function () {
-      if (this.readyState == XMLHttpRequest.DONE) {
-        let confirmation = JSON.parse(this.responseText);
-        localStorage.setItem("order", JSON.stringify(confirmation));
-        /*let prix = JSON.parse(localStorage.getItem('prixTotal'));
-               sessionStorage.setItem('prix', JSON.stringify(prix));
-              console.log(typeof prix);
-              console.log( prix);*/
-        //Des que la requete est envoyé, on bascule sur la page de confirmation de commande avec toutes les infos demandé : Id de commande, prix du panier
-        window.location.href = "confirmation_commande.html";
-      }
-    };
-    request.open("post", "http://localhost:3000/api/cameras/order");
-    request.setRequestHeader("Content-Type", "application/json");
-    request.send(validateAndSendOrder);
-  }
+    // changement de la ligne function sendOrder()
+  // function sendOrder(contact, productsId) {
+  //   let request = new XMLHttpRequest();
+  //   request.onreadystatechange = function () {
+  //     if (this.readyState == XMLHttpRequest.DONE) {
+  //       let confirmation = JSON.parse(this.responseText);
+  //       localStorage.setItem("order", JSON.stringify(confirmation));
+  //       /*let prix = JSON.parse(localStorage.getItem('prixTotal'));
+  //              sessionStorage.setItem('prix', JSON.stringify(prix));
+  //             console.log(typeof prix);
+  //             console.log( prix);*/
+  //       //Des que la requete est envoyé, on bascule sur la page de confirmation de commande avec toutes les infos demandé : Id de commande, prix du panier
+  //       window.location.href = "confirmation_commande.html";
+  //     }
+  //   };
+  //   request.open("post", "http://localhost:3000/api/cameras/order");
+  //   request.setRequestHeader("Content-Type", "application/json");
+  //   request.send(validateAndSendOrder);
+  // }
 
   console.log("sendOrder");
-}
 
-document.getElementById("envoyer").addEventListener("click", function (event) {
-  console.log("2");
-  validateAndSendOrder();
-});
+
+// document.getElementById("envoyer").addEventListener("click", function (event) {
+//   console.log("2");
+//   validateAndSendOrder();
+// });
+
+  // Affichage contact
 
 function contactUs() {
   Swal.fire({
