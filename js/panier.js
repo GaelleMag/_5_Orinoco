@@ -174,25 +174,19 @@ function getProductsOrdered() {
   if (panier == null) {
     alert("Votre panier est vide");
   }
-  // Tableau produits
- // let products = [];
-  // récupérer uniquement id
 
  const productsId = getProductsId();
  console.log(productsId)
 }
 
-let customerInfo = getCustomerInfo();
-console.log(customerInfo);
-
 function getCustomerInfo() {
-  let firstName = document.getElementById("firstname").value;
+  let firstName = document.getElementById("firstName").value;
   let lastName = document.getElementById("lastName").value;
   let address = document.getElementById("address").value;
   let city = document.getElementById("city").value;
   let email = document.getElementById("email").value;
 
-  class Contact {
+  class contact {
     constructor(firstName, lastName, address, city, email) {
       this.firstName = firstName;
       this.lastName = lastName;
@@ -200,11 +194,12 @@ function getCustomerInfo() {
       this.city = city;
       this.email = email;
     }
-    Contact = new Contact();
+    contact = new Contact();
     // ajouter data user au localStorage sous forme
   }
 }
-
+let customerInfo = getCustomerInfo();
+console.log(customerInfo);
 // Création de la fonction envoyer données au serveur + récupération id commande en retour
 function validateAndSendOrder() {
   console.log("validateAndSendOrder!");
