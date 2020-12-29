@@ -66,14 +66,25 @@ if (panier) {
   function afficherPanier() {
     let cart = JSON.parse(localStorage.getItem('monPanier'));
     panier.forEach(function (product) {
+
+        // bouton supprimer
+
+      let supprimer = document.createElement('button');
+      supprimer.id = 'supprimer';
+      supprimer.className = 'btn btn-secondary btn-block mb-12';
+      supprimer.textContent = 'Supprimer';
+        
+      let supprimerArticle  = localStorage.removeItem('panier');
       console.log(panier);
       console.log(`${product.name}`);
       let li = document.createElement('li');
       li.className = 'listeProduit';
-      li.textContent = 'Caméra : ' + `${product.name}` + ' ' + ' Prix : ' + `${product.price}` / 100 + '€';
+      li.innerHTML = '<b>Camera :</b> ' + `${product.name}` + ' ' + ' <b>Prix : </b>' + `${product.price}` / 100 + '€';
       ulProduit.appendChild(li);
+      ulProduit.appendChild(supprimer);
 
-      // bouton supprimer
+    
+      
   
     });
   }

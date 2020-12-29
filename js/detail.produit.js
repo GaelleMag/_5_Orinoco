@@ -26,27 +26,8 @@ fetch('http://localhost:3000/api/cameras/'+ id)
 //fetch('http://localhost:3000/api/cameras/')
     .then((response) => response.json())
     .then(function(data) {
-        
-        
 
-
-        // // Compteur d'articles
-        // function nombreProduit(){
-        //     let qte = panier.length;
-        //     console.log(panier.length)
-        //     }
-        // nombreProduit() 
-
-        // Création du lien panier dans le header
-
-        // let header = document.getElementById('enTete');
-        // let a = document.createElement('a');  
-        // let lien = document.createTextNode('Voir mon panier (' + `${panier.length}` + ')'); 
-        // a.title = 'Voir mon joli panier';  
-        // a.href = 'panier.html';
-        // header.appendChild(a);
-        //     a.appendChild(lien); 
-        // document.body.appendChild(header);
+        // compteur produit 
         let nbre = document.getElementById('panier');
             nbre.textContent = 'Panier (' + `${panier.length}` + ')';
 
@@ -61,8 +42,6 @@ fetch('http://localhost:3000/api/cameras/'+ id)
         let section1 = document.createElement('section');
             section1.id = 'section_camera';
             section1.className = 'row';
-       // let div_con = document.createElement('div');
-        //    div_con.className = 'col-md-12';
         let div_title = document.createElement('div');
             div_title.id = 'title';
             div_title.className = 'my-3'
@@ -99,22 +78,15 @@ fetch('http://localhost:3000/api/cameras/'+ id)
             retour.className = 'btn btn-primary btn-block mb-4';
             retour.textContent = 'Retour'; 
 
-
-
         document.body.appendChild(main);
         main.appendChild(h1);
         main.appendChild(section1);
         section1.appendChild(div_title);
         section1.appendChild(div_row2);
         section1.appendChild(div_row);
-        //section1.appendChild(div_con);
-        //div_con.appendChild(div_title);
-        //div_con.appendChild(div_row);
-       // div_con.appendChild(div_row2);
         div_row2.appendChild(image);
         div_row.appendChild(para);
         div_row.appendChild(para_prix);
-        //div_row2.appendChild(image);
         div_row.appendChild(para);
         para.appendChild(span);
 
