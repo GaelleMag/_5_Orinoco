@@ -14,10 +14,6 @@ let panier = JSON.parse(localStorage.getItem('monPanier'));
   .then((resp) => resp.json())
   .then(function(data) {
     console.log(data)
-
-    // compteur produit
-    let nbre = document.getElementById('panier');
-        nbre.textContent = 'Panier (' + `${panier.length}` + ')';
     let cameras = data;
     let main = document.getElementById('toutesNosCameras');
     let h1 = createNode('h1');
@@ -31,11 +27,8 @@ let panier = JSON.parse(localStorage.getItem('monPanier'));
         append(main,h2);
         append(main, divGlobale);
     
-      
-
     return cameras.map(function(camera){
       let id =  camera._id;
-
       
       let div1 = createNode('div');
         div1.className = 'col-lg-4 col-sm-6 mb-4';
@@ -46,8 +39,6 @@ let panier = JSON.parse(localStorage.getItem('monPanier'));
       let img = createNode('img');
           img.className = 'card-img-top';
           img.src = camera.imageUrl;
-    //  let h1 = createNode ('h1');
-    //      h1.textContent = 'OrinoCamera, camréras vintages';
       let h3 = createNode('h3');
           h3.className = 'card-title';
           h3.innerHTML = `${camera.name}` + ' ' /*+ ' \n ' + `${camera.description}`*/;
@@ -82,28 +73,31 @@ let panier = JSON.parse(localStorage.getItem('monPanier'));
       document.body.appendChild(footer);
 
       // header
-      function nombreProduit(){
-        let qte = panier.length;
-        console.log(panier.length)
-        panier = document.getElementById('panier'),
-    panier.textContent = 'Paner' + `${panier.length}`;
-    }
-        })
-    nombreProduit() 
+      let nbre = document.getElementById('panier');
+            nbre.textContent = 'Panier (' + `${panier.length}` + ')';
+    //   function nombreProduit(){
+    //     let qte = panier.length;
+    //     console.log(panier.length)
+    //     panier = document.getElementById('panier'),
+    // panier.textContent = 'Paner' + `${panier.length}`;
+    // }
+    //     })
+    // nombreProduit() 
     
   })
+})
 .catch(function(error){
   console.log(error);
 });
-function contactUs() {
-  Swal.fire({
-      //let btnContact = document.getElementById()
-      imageUrl: 'images/contact2.jpg',
-      imageHeight: 700,
-      imageWidth : 1500,
-      imageAlt: 'contact'
-  })  
-};
+// function contactUs() {
+//   Swal.fire({
+//       //let btnContact = document.getElementById()
+//       imageUrl: 'images/contact2.jpg',
+//       imageHeight: 700,
+//       imageWidth : 1500,
+//       imageAlt: 'contact'
+//   })  
+// };
 /*
 var URL = 'https://developer.mozilla.org/';
 
@@ -114,3 +108,22 @@ console.log('Cliquer ici pour revenir sur ' + texteAffiché.link(URL));
             link.id = 'lien';
             link.href = 'produit.html?id=' + teddy._id;
             link.textContent = 'Voir l'ourson';*/
+
+            // compteur produit
+    // if (panier) {
+    //   function nombreProduit() {
+    //     let qte = panier.length;
+    //     if (qte == 0) {
+    //       p.textContent =
+    //         'Panier (0)';
+    //     }
+    //     if (qte >= 1) {
+    //       p.textContent =
+    //       'Panier (' + `${panier.length}` + ')';
+    //     }
+    //     console.log(qte);
+    //   }
+    //   let nbre = document.getElementById('panier');
+    //       nbre.textContent = nombreProduit();
+    // // let nbre = document.getElementById('panier');
+    // //     nbre.textContent = 'Panier (' + `${panier.length}` + ')';
