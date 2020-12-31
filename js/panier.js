@@ -171,7 +171,7 @@ let customerInfo = getCustomerInfo();
 
 function getCustomerInfo() {
 
-  let firstName = document.getElementById('firstName').value;
+  let firstName = document.forms[0].elements['firstName'].value;
   let lastName = document.getElementById('lastName').value;
   let address = document.getElementById('address').value;
   let city = document.getElementById('city').value;
@@ -199,50 +199,30 @@ let sendOrder = {
   products
 };
 
-//   addCart()
-  // Envoyer Data vers id /order
-//document.getElementById('envoyer').addEventListener('click', envoyerCommande());
-
-
 
 // let btnEnvoyer = document.getElementById('envoyer');
 //     btnEnvoyer.href = 'confirmation_commande.html';
 
-function envoyerCommande(){
+// function envoyerCommande(){
   let envoyerLesDonnées = document.getElementById('envoyer');
   envoyerLesDonnées.addEventListener('click', function(e){
     panier.push(sendOrder);
-  })
-//   fetch('http://localhost:3000/api/cameras/order', {
-//     method : 'POST',
-//     body : JSON.stringify(sendOrder),
-//     headers: {
-//       'Content-type': 'application/json; charset=UTF-8'
-//     }
-    
-//   })
-//   .then(response => response.json()) 
-//   .then(json => console.log(json))
-//   .then(response => {if(response.status===200) { window.localtion.href = "confirmation_commande.html"}})
-//   .catch(err => console.log(err));
  
-// };
 
-fetch('http://localhost:3000/api/cameras/order', {
-method : 'POST',
-body : JSON.stringify(sendOrder),
-headers: {
-'Content-type': 'application/json; charset=UTF-8'
-}
-})
-.then(response => {
-if(response.status === 200){
-window.location.href = 'confirmation_commande.html'
-}
-})
-.then(json => console.log(json))
-.catch(err => console.log(err));
-}
+  fetch('http://localhost:3000/api/cameras/order', {
+    method: 'POST',
+    body: JSON.stringify(sendOrder),
+    headers: {
+    'Content-type': 'application/json; charset=UTF-8'
+    }
+    })
+    .then(response => {
+    if (response.status === 201) {
+    (window.location.href = 'confirmation_commande.html')
+    }
+    })
+    .catch(err => console.log(err));
+  })
 // let envoyer = document.getElementById('envoyer');
 //           envoyer.href = 'confirmation_commande.html';
 
@@ -269,7 +249,7 @@ window.location.href = 'confirmation_commande.html'
   //   request.send(sendOrder);
   //}
 
- console.log('sendOrder');
+ //console.log('sendOrder');
 
 
 // document.getElementById('envoyer').addEventListener('click', function (event) {
