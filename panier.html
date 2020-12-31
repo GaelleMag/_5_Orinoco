@@ -15,12 +15,8 @@
   <body>
     <header id="header">
       <nav class="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar">
-        <a class="navbar-brand" href="#"><strong>Orinoco</strong></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <a class="navbar-brand" href="index.html"><strong>Orinoco</strong></a>
+        <div id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
               <a class="nav-link" href="index.html">Accueil <span class="sr-only"></span></a>
@@ -40,14 +36,14 @@
           <div class="col">
             <div class="form-outline">
               <label class="form-label" for="nom">Nom : </label>
-              <input type="text" name="nom" class="form-control" id="firstName" placeholder="Ex. : Dupont" required>
+              <input type="text" name="firstName" class="form-control" id="firstName" placeholder="Ex. : Dupont" required>
               <span id="nom"></span>
             </div>
           </div>
           <div class="col">
             <div class="form-outline">
               <label class="form-label" for="prenom">Prénom : </label>
-              <input type="text" name="prenom" class="form-control" id="lastName" placeholder="Ex. : Jean" required>
+              <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Ex. : Jean" required>
               <span id="prenom"></span>
             </div>
           </div>
@@ -56,7 +52,7 @@
           <div class="col">
             <div class="form-outline">
               <label class="form-label" for="voie">Voie : </label>
-              <input type="text" name="voie" class="form-control" id="address" placeholder="Ex. : 2 rue de l'Eglise"
+              <input type="text" name="address" class="form-control" id="address" placeholder="Ex. : 2 rue de l'Eglise"
                 required>
               <span id="adresse"></span>
             </div>
@@ -64,14 +60,14 @@
           <div class="col">
             <div class="form-outline">
               <label class="form-label" for="ville">Ville : </label>
-              <input type="text" name="ville" class="form-control" id="city" placeholder="69000 Lyon" required>
+              <input type="text" name="city" class="form-control" id="city" placeholder="69000 Lyon" required>
               <span id="adresse"></span>
             </div>
           </div>
         </div>
         <div class="form-outline mb-4">
           <label class="form-label" for="courriel">Adresse mail :</label>
-          <input type="email" name="courriel" class="form-control" id="email" required
+          <input type="email" name="email" class="form-control" id="email" required
             placeholder="nom.prenom@domaine.fr">
           <span id="aideCourriel"></span>
         </div>

@@ -128,19 +128,9 @@ nomElt.addEventListener('blur', function (e) {
 // Focus sur la zone de saisie du nom
 nomElt.focus();
 
-//Contrôle du courriel en fin de saisie
 
-function verifMail() {
-  document.getElementById('email').addEventListener('blur', function (e) {
-    var regexEmail = /[\w\.]+[\w]*@[\w]+\.[\w]/;
-    if (!regexEmail.test(e.target.value)) {
-      validiteEmail = 'Adresse invalide';
-    } else {
-      console.log('ok');
-    }
-    document.getElementById('aideCourriel').textContent = validiteEmail;
-  })
-};
+
+
 
 // Récupération des id produits
 let productsOrdered = getProductsOrdered(); // récupère les infos et les stocke en objet
@@ -199,30 +189,69 @@ let sendOrder = {
   products
 };
 
-
-// let btnEnvoyer = document.getElementById('envoyer');
-//     btnEnvoyer.href = 'confirmation_commande.html';
+//Contrôle du courriel en fin de saisie
+function verifMail() {
+  document.getElementById('email').addEventListener('input', function (e) {
+    var regexEmail = /[\w\.]+[\w]*@[\w]+\.[\w]/;
+    if (!regexEmail.test(e.target.value)) {
+      validiteEmail = 'Adresse invalide';
+      alert('Adresse mail invalide!')
+    } else {
+      console.log('ok');
+    }
+    document.getElementById('aideCourriel').textContent = validiteEmail;
+  })
+}
 
 // function envoyerCommande(){
   let envoyerLesDonnées = document.getElementById('envoyer');
   envoyerLesDonnées.addEventListener('click', function(e){
     panier.push(sendOrder);
- 
+    //function verifMail() {
+      document.getElementById('email').addEventListener('click', function (e) {
+      //   var regexEmail = /[\w\.]+[\w]*@[\w]+\.[\w]/;
+      //   if (!regexEmail.test(e.target.value)) {
+      //     validiteEmail = 'Adresse invalide';
+      //     alert('Adresse mail invalide!')
+      //   } 
+      // //   else {
+      // //     console.log('ok');
+      // //   }
+      // //   document.getElementById('aideCourriel').textContent = validiteEmail;
+      // // })
+      // else if (document.forms[0].elements['firstName'].value != /[\w\.]/) {
+      //   alert('Nom invalide!')
+      //   return event.preventDefault ;        
+      // }
+      // else if (document.forms[0].elements['lastName'].value != /[\w\.]/) {
+      //   alert('Prénom invalide!')
+      //   return event.preventDefault ;        
+      // }
+      // else if (document.forms[0].elements['adress'].value != /[\w\.]/) {
+      //   alert('Adresse invalide!')
+      //   return event.preventDefault ;        
+      // }else if (document.forms[0].elements['city'].value != /[\w\.]/) {
+      //   alert('Ville invalide!')
+      //   return event.preventDefault ;        
+      // }
+      // else {
 
-  fetch('http://localhost:3000/api/cameras/order', {
-    method: 'POST',
-    body: JSON.stringify(sendOrder),
-    headers: {
-    'Content-type': 'application/json; charset=UTF-8'
-    }
-    })
+    fetch('http://localhost:3000/api/cameras/order', {
+      method: 'POST',
+      body: JSON.stringify(sendOrder),
+      headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+      }
+      })
     .then(response => {
-    if (response.status === 201) {
-    (window.location.href = 'confirmation_commande.html')
-    }
+      if (response.status === 201) {
+      (window.location.href = 'confirmation_commande.html')
+      }
     })
     .catch(err => console.log(err));
   })
+  })
+//})
 // let envoyer = document.getElementById('envoyer');
 //           envoyer.href = 'confirmation_commande.html';
 
