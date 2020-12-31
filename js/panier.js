@@ -205,30 +205,44 @@ let sendOrder = {
 
 
 
-let btnEnvoyer = document.getElementById('envoyer');
-    btnEnvoyer.href = 'confirmation_commande.html';
+// let btnEnvoyer = document.getElementById('envoyer');
+//     btnEnvoyer.href = 'confirmation_commande.html';
 
 function envoyerCommande(){
   let envoyerLesDonnées = document.getElementById('envoyer');
   envoyerLesDonnées.addEventListener('click', function(e){
     panier.push(sendOrder);
   })
-  fetch('http://localhost:3000/api/cameras/order', {
-    method : 'POST',
-    body : JSON.stringify(sendOrder),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8'
-    }
+//   fetch('http://localhost:3000/api/cameras/order', {
+//     method : 'POST',
+//     body : JSON.stringify(sendOrder),
+//     headers: {
+//       'Content-type': 'application/json; charset=UTF-8'
+//     }
     
-  })
-  .then(response => response.json()) 
-  .then(json => console.log(json))
-  .then(window.location.href = 'confirmation_commande.html')
-  .catch(err => console.log(err));
+//   })
+//   .then(response => response.json()) 
+//   .then(json => console.log(json))
+//   .then(response => {if(response.status===200) { window.localtion.href = "confirmation_commande.html"}})
+//   .catch(err => console.log(err));
  
-};
+// };
 
-
+fetch('http://localhost:3000/api/cameras/order', {
+method : 'POST',
+body : JSON.stringify(sendOrder),
+headers: {
+'Content-type': 'application/json; charset=UTF-8'
+}
+})
+.then(response => {
+if(response.status === 200){
+window.location.href = 'confirmation_commande.html'
+}
+})
+.then(json => console.log(json))
+.catch(err => console.log(err));
+}
 // let envoyer = document.getElementById('envoyer');
 //           envoyer.href = 'confirmation_commande.html';
 
