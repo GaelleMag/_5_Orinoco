@@ -71,12 +71,13 @@ fetch('http://localhost:3000/api/cameras/'+ id)
         let boutonAjout = document.createElement('button');
             boutonAjout.id = 'btnAjout';
             //boutonAjout.className = 'col-md-3';
-            boutonAjout.className = 'btn btn-success btn-block col-md-3';
+            boutonAjout.className = 'btn btn-success col-md-3';
             boutonAjout.textContent = 'Ajouter';
         let retour = document.createElement('a');
             retour.href = 'index.html';
-            retour.className = 'btn btn-primary btn-block mb-4';
-            retour.textContent = 'Retour'; 
+            retour.className = 'btn btn-primary';
+            retour.id = 'btnRetour';
+            retour.textContent = '<< Retour'; 
 
         document.body.appendChild(main);
         main.appendChild(h1);
@@ -152,13 +153,13 @@ fetch('http://localhost:3000/api/cameras/'+ id)
     console.log(error);
     });
 
-    function contactUs() {
-        Swal.fire({
-            //let btnContact = document.getElementById()
-            imageUrl: 'images/contact2.jpg',
-            imageHeight: 700,
-            imageWidth : 1500,
-            imageAlt: 'contact'
-        })  
-    };
+    // function contactUs() {
+    //     Swal.fire({
+    //         //let btnContact = document.getElementById()
+    //         imageUrl: 'images/contact2.jpg',
+    //         imageHeight: 700,
+    //         imageWidth : 1500,
+    //         imageAlt: 'contact'
+    //     })  
+    // };
 

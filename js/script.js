@@ -77,11 +77,11 @@ fetch(url)
     afficherArticle() 
     function afficherArticle() {
       // let qte = panier.length;
-      if (`${panier.length}`==0){
-        nbre.textContent = 'Panier (0)';
+      if (panier && panier.length > 0){
+        nbre.textContent = 'Panier (' + `${panier.length}` + ')'
       }
       else {
-        nbre.textContent = 'Panier (' + `${panier.length}` + ')';
+        nbre.textContent = 'Panier (0)';
       }
     // }
         //  nbre.textContent = 'Panier (' + `${panier.length}` + ')';

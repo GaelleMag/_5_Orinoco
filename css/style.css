@@ -1,13 +1,6 @@
-/*body, a{
-	color : #fff;
-	background-color: #2e272d;
-	background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+.container {
+	margin-top: 3.5rem;
 }
-/*img{
-	width: 30%;
-	border-radius: 25%;
-}*/
-
 .page-footer{
 	background: #30699c;
 	color : white;
@@ -23,7 +16,6 @@
 	color: white;
 	size: 2rem;
 }
-
 .navbar{
 	 color : black;
 	 background-color:  #30699c;
@@ -37,14 +29,15 @@
 .col-md-3{
 	padding-left: 2rem;
 }
-#sectionPanier{
-	margin-top: 3rem;
+#btnRetour{
+	margin-top: 1.5rem;
 }
-/* Modal Content/Box */
+/* Modal Content/Box
 .modal-content {
 	background-color: #fefefe;
-	margin: 15% auto; /* 15% from the top and centered */
+	margin: 15% auto; /* 15% from the top and centered 
 	padding: 20px;
 	border: 1px solid #888;
-	width: 80%; /* Could be more or less, depending on screen size */
-  }
+	width: 80%; /* Could be more or less, depending on screen size 
+  } 
+  */
