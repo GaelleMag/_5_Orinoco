@@ -29,22 +29,23 @@
       </nav>
     </header>
     <section id="sectionFormulaire">
-      <form id="monFormulaire" method="post" <action="http://localhost:3000/api/order/">
+      <form id="monFormulaire" >
+      <!--method="post" action="http://localhost:3000/api/order">-->
         <h2>Commande</h2>
         <p> Merci de remplir le formulaire ci-dessous afin de valider votre commande </p>
         <div class="row mb-4">
           <div class="col">
             <div class="form-outline">
               <label class="form-label" for="nom">Nom : </label>
-              <input type="text" name="firstName" class="form-control" id="firstName" placeholder="Ex. : Dupont" required>
-              <span id="nom"></span>
+              <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Ex. : Dupont" required>
+              <span id="lastNameError"></span>
             </div>
           </div>
           <div class="col">
             <div class="form-outline">
               <label class="form-label" for="prenom">Prénom : </label>
-              <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Ex. : Jean" required>
-              <span id="prenom"></span>
+              <input type="text" name="firstName" class="form-control" id="firstName" placeholder="Ex. : Jean" required>
+              <span id="firstNameError"></span>
             </div>
           </div>
         </div>
@@ -54,14 +55,14 @@
               <label class="form-label" for="voie">Voie : </label>
               <input type="text" name="address" class="form-control" id="address" placeholder="Ex. : 2 rue de l'Eglise"
                 required>
-              <span id="adresse"></span>
+              <span id="addressError"></span>
             </div>
           </div>
           <div class="col">
             <div class="form-outline">
               <label class="form-label" for="ville">Ville : </label>
               <input type="text" name="city" class="form-control" id="city" placeholder="69000 Lyon" required>
-              <span id="adresse"></span>
+              <span id="cityError"></span>
             </div>
           </div>
         </div>
@@ -69,7 +70,7 @@
           <label class="form-label" for="courriel">Adresse mail :</label>
           <input type="email" name="email" class="form-control" id="email" required
             placeholder="nom.prenom@domaine.fr">
-          <span id="aideCourriel"></span>
+          <span id="emailError"></span>
         </div>
         <input type="submit" class="btn btn-success" id="envoyer" value="Envoyer">
         <input type="reset" class="btn btn-danger" value="Annuler">
