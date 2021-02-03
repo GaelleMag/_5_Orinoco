@@ -1,19 +1,22 @@
+// Création des fonctions pour insertion éléments du DOM
 function createNode(element){
   return document.createElement(element);
 }
-
 function append(parent, el){
   return parent.appendChild(el);
 }
+// Définitions des variables
 const ul = document.getElementById('toutesNosCameras');
 const url = 'http://localhost:3000/api/cameras';
 const produit = 'Voir le produit';
 let panier = JSON.parse(localStorage.getItem('monPanier'));
 
+// Connexion API
+
 fetch(url)
 .then((resp) => resp.json())
 .then(function(data) {
-  console.log(data)
+  // Création du DOM
   let cameras = data;
   let main = document.getElementById('toutesNosCameras');
   let h1 = createNode('h1');
@@ -29,7 +32,6 @@ fetch(url)
   
   return cameras.map(function(camera){
     let id =  camera._id;
-    
     let div1 = createNode('div');
       div1.className = 'col-lg-4 col-sm-6 mb-4';
     let div2 = createNode('div');
@@ -41,7 +43,7 @@ fetch(url)
         img.src = camera.imageUrl;
     let h3 = createNode('h3');
         h3.className = 'card-title';
-        h3.innerHTML = `${camera.name}` + ' ' /*+ ' \n ' + `${camera.description}`*/;
+        h3.innerHTML = `${camera.name}` + ' ';
     let p = createNode('p');
         p.className = 'card-text';
         p.innerHTML = `${camera.description}` + ' '; 
@@ -53,16 +55,12 @@ fetch(url)
             link.id = 'lien';
             link.href = 'detail.produit.html?id=' + camera._id;
             link.textContent = 'Voir la camera';
-    
-    
     let header = document.getElementById('header');
-    
     let footer = document.getElementById('footer');
     main.className = 'container';
     document.body.appendChild(header);
     document.body.appendChild(main);
 
-    
     append(divGlobale, div1);
     append(div1, div2)
     append(div2, img);
@@ -72,29 +70,16 @@ fetch(url)
     append(div3, a);
     document.body.appendChild(footer);
 
-    // header
+    // Compteur d'articles dans header
     let nbre = document.getElementById('panier');
     afficherArticle() 
     function afficherArticle() {
-      // let qte = panier.length;
       if (panier && panier.length > 0){
         nbre.textContent = 'Panier (' + `${panier.length}` + ')'
       }
       else {
         nbre.textContent = 'Panier (0)';
       }
-    // }
-        //  nbre.textContent = 'Panier (' + `${panier.length}` + ')';
-  //   function nombreProduit(){
-  //     let qte = panier.length;
-  //     console.log(panier.length)
-  //     panier = document.getElementById('panier'),
-  // panier.textContent = 'Paner' + `${panier.length}`;
-  // }
-  //     })
-  // nombreProduit() 
-  
-//})
     }
   })
 })
@@ -110,32 +95,3 @@ console.log(error);
 //       imageAlt: 'contact'
 //   })  
 // };
-/*
-var URL = 'https://developer.mozilla.org/';
-
-console.log('Cliquer ici pour revenir sur ' + texteAffiché.link(URL));
-// Cliquer ici pour revenir sur <a href='https://developer.mozilla.org/'>MDN</a>*/
-
-/* let link = document.createElement('a');
-          link.id = 'lien';
-          link.href = 'produit.html?id=' + teddy._id;
-          link.textContent = 'Voir l'ourson';*/
-
-          // compteur produit
-  // if (panier) {
-  //   function nombreProduit() {
-  //     let qte = panier.length;
-  //     if (qte == 0) {
-  //       p.textContent =
-  //         'Panier (0)';
-  //     }
-  //     if (qte >= 1) {
-  //       p.textContent =
-  //       'Panier (' + `${panier.length}` + ')';
-  //     }
-  //     console.log(qte);
-  //   }
-  //   let nbre = document.getElementById('panier');
-  //       nbre.textContent = nombreProduit();
-  // // let nbre = document.getElementById('panier');
-  // //     nbre.textContent = 'Panier (' + `${panier.length}` + ')';

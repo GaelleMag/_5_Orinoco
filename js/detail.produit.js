@@ -15,15 +15,11 @@ else {
     let init = []
     localStorage.setItem('monPanier', (JSON.stringify(init)))
 };
-//let panier = JSON.parse(localStorage.getItem('monPanier'));
 let panier = JSON.parse(localStorage.getItem('monPanier'));
-console.log(panier)
 
 // connexion API
 
-//let camera = data; let id =  camera._id;
 fetch('http://localhost:3000/api/cameras/'+ id)
-//fetch('http://localhost:3000/api/cameras/')
     .then((response) => response.json())
     .then(function(data) {
 
@@ -32,8 +28,6 @@ fetch('http://localhost:3000/api/cameras/'+ id)
             nbre.textContent = 'Panier (' + `${panier.length}` + ')';
 
         // affichage camera + description dans le DOM
-
-
         let main = document.createElement('main');
             main.className = 'container';
         let h1 = document.createElement('h1');
@@ -70,8 +64,7 @@ fetch('http://localhost:3000/api/cameras/'+ id)
             selectLent.className = 'col-md-3';
         let boutonAjout = document.createElement('button');
             boutonAjout.id = 'btnAjout';
-            //boutonAjout.className = 'col-md-3';
-            boutonAjout.className = 'btn btn-success col-md-3';
+            boutonAjout.className = 'btn btn-success col-md-3 ';
             boutonAjout.textContent = 'Ajouter';
         let retour = document.createElement('a');
             retour.href = 'index.html';
@@ -99,10 +92,7 @@ fetch('http://localhost:3000/api/cameras/'+ id)
         form.appendChild(boutonAjout);
         document.body.appendChild(footer);
 
-    //    document.body.appendChild(section);
-       // section2.appendChild(div_row);
-
-       let t_prix = document.createTextNode('Prix : ' + `${data.price}`/100  + ' €');
+        let t_prix = document.createTextNode('Prix : ' + `${data.price}`/100  + ' €');
         para_prix.appendChild(t_prix);
 
         let t_desc = document.createTextNode('Description : ' +  `${data.description}` + '\n');
@@ -115,40 +105,27 @@ fetch('http://localhost:3000/api/cameras/'+ id)
 
  // Choix de la lentille
 
-
         data.lenses.forEach(function(lense) {
-           // let lentille  = document.getElementById('selectlentille');
             let option = document.createElement('option');
-              option.value = `${lense}`;
+            option.value = `${lense}`;
             option.textContent = `${lense}`;
             option.id = `${lense}`;
             selectLent.appendChild(option);
             console.log(`${lense}`)
-           // let choixL =  document.getElementById(`${lenses}`);
-
-
-            })
-
+        })
 
         function addCart(){
             let bouton = document.getElementById('btnAjout');
             bouton.addEventListener('click', function(e){ 
                 e.preventDefault();
-                
                 panier.push(data);
-                //panier.push(data.name + data._id);
-                //console.log(data._id);
                 localStorage.setItem('monPanier', JSON.stringify(panier));
-                //localStorage.setItem('monPanier', panier);
                 alert('Vous avez ajouté ' + `${data.name}` + ' au panier');
                 document.location.reload()
             }) 
         }
-            addCart()
-
-            
+        addCart()
     })
-
     .catch(function(error){
     console.log(error);
     });
